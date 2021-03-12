@@ -1,3 +1,6 @@
+// @see https://github.com/garris/BackstopJS
+
+// Get URLs.
 const liveURL = process.env.LIVE_SITE_URL.replace(/\/$/, "");
 const multidevURL = process.env.MULTIDEV_SITE_URL.replace(/\/$/, "");
 
@@ -9,6 +12,7 @@ let pathsToTest = {
   "Vaccine Sites-fil": "/fil/vaccine-sites",
 };
 let clickSelectorsToTest = [];
+let keyPressSelectorsToTest = [];
 let viewportsToTest = [
   {
     name: "phone",
@@ -44,9 +48,28 @@ if (process.env.TEST_TYPE > 1) {
   readySelectorToTest = ".vaccine-filter-form #edit-submit";
 
   if (process.env.TEST_TYPE == 3) {
+    keyPressSelectorsToTest = [
+      {
+        selector: ".vaccine-filter-form #edit-language",
+        keyPress: "vi",
+      },
+      {
+        selector: ".vaccine-filter-form #edit-access-mode",
+        keyPress: "dr",
+      },
+    ];
     clickSelectorsToTest = [
       ".vaccine-filter-form #edit-restrictions",
       ".vaccine-filter-form #edit-eligibility-ec",
+      ".vaccine-filter-form #edit-submit",
+    ];
+  }
+
+  if (process.env.TEST_TYPE == 4) {
+    clickSelectorsToTest = [
+      ".vaccine-filter-form #edit-restrictions",
+      ".vaccine-filter-form #edit-wheelchair",
+      ".vaccine-filter-form #edit-eligibility-sf",
       ".vaccine-filter-form #edit-submit",
     ];
   }
@@ -62,6 +85,7 @@ for (let [key, value] of Object.entries(pathsToTest)) {
     referenceUrl: liveURL + value,
     hideSelectors: [],
     removeSelectors: [],
+    keyPressSelectors: keyPressSelectorsToTest,
     readySelector: readySelectorToTest,
     clickSelectors: clickSelectorsToTest,
     selectorExpansion: true,

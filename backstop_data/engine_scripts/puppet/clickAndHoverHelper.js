@@ -1,3 +1,4 @@
+// @see https://github.com/puppeteer/puppeteer
 module.exports = async (page, scenario) => {
   const hoverSelector = scenario.hoverSelectors || scenario.hoverSelector;
   const clickSelector = scenario.clickSelectors || scenario.clickSelector;
