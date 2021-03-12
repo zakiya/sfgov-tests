@@ -25,7 +25,7 @@ let readySelectorToTest = "main";
 
 // Other tests.
 // See .env for test types.
-if (process.env.TEST_TYPE == 2) {
+if (process.env.TEST_TYPE > 1) {
   pathsToTest = {
     "Vaccine Sites": "/vaccine-sites",
   };
@@ -42,6 +42,14 @@ if (process.env.TEST_TYPE == 2) {
     },
   ];
   readySelectorToTest = ".vaccine-filter-form #edit-submit";
+
+  if (process.env.TEST_TYPE == 3) {
+    clickSelectorsToTest = [
+      ".vaccine-filter-form #edit-restrictions",
+      ".vaccine-filter-form #edit-eligibility-ec",
+      ".vaccine-filter-form #edit-submit",
+    ];
+  }
 }
 
 // -------------
