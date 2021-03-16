@@ -2,7 +2,7 @@
 
 sfgov-check ()  {
   echo 'cbf or cs'
-  DIR=/Users/rona/Sites/sfgov/
+  DIR=~/Sites/sfgov/
   MODULE_PATH=web/modules/custom/sfgov_vaccine
   CS_PATH=vendor/bin/php$1
   EXTENSIONS=php,module,inc,install,test,profile,theme,css,info
