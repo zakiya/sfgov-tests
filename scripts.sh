@@ -17,6 +17,9 @@ sfgov-testurl-local () {
   if [ $1 = "phone" ]
   then
     URL=https://vaccination-site-microservice-git-main-sfds.vercel.app/api/v1/appointments
+  elif [ $1 = "z" ]
+  then
+    URL=http://zakiyadesigns.com/sites.json
   else
     URL=https://vaccination-site-microservice.vercel.app/api/v1/test_sites
   fi
@@ -26,6 +29,17 @@ sfgov-testurl-local () {
 }
 
 sfgov-testurl-pr () {
-   echo "Ex: 'sfgov-testurl-pr 208'"
- drush sfgov.pr-$1 -- config-set sfgov_vaccine.settings api_url https://vaccination-site-microservice.vercel.app/api/v1/test_sites
+  echo "Ex: 'sfgov-testurl-pr phone 869'"
+
+  if [ $1 = "phone" ]
+  then
+    URL=https://vaccination-site-microservice-git-test-html-data-sfds.vercel.app/api/v1/test_sites
+  else
+    URL=https://vaccination-site-microservice.vercel.app/api/v1/test_sites
+  fi
+  terminus drush sfgov.pr-$2 -- config-set sfgov_vaccine.settings api_url $URL
+  echo "api_url set to:"
+  echo "$URL"
+  echo "View page at:"
+  echo "https://pr-$2-sfgov.pantheonsite.io/vaccine-sites"
 }
