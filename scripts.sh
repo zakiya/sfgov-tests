@@ -16,7 +16,7 @@ sfgov-testurl-local () {
   echo "Ex: 'sfgov-testurl-local phone' or 'sfgov-testurl-local'"
   if [ $1 = "phone" ]
   then
-    URL=https://vaccination-site-microservice-git-main-sfds.vercel.app/api/v1/appointments
+    URL=https://vaccination-site-microservice-git-test-html-data-sfds.vercel.app/api/v1/test_sites
   elif [ $1 = "z" ]
   then
     URL=http://zakiyadesigns.com/sites.json
