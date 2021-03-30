@@ -13,6 +13,10 @@ cp example.env .env
 ### Capture and run tests.
 `npm run backstop`
 
+## Cypress tests.
+### Capture and run tests.
+`npx cypress open`
+
 ## Other commands
 
 scripts.sh contains the following:
