@@ -39,7 +39,7 @@ describe("sf.gov", () => {
   it("Test", () => {
     login();
     createTransaction(values.titleA);
-    createTransaction("Transaction B", true);
+    createTransaction(values.titleB, true);
     createTopicNode("Topic");
 
     // expect(true).to.equal(true);
