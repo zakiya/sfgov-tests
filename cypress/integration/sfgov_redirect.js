@@ -56,10 +56,16 @@ let createTransaction = (title, translation) => {
 };
 
 let login = () => {
-  cy.visit("/user/login");
-  cy.get('[name="name"]').type("zakiya@chapterthree.com");
-  cy.get('[name="pass"]').type("admin");
-  cy.get(".user-login-form input.form-submit").click();
+  cy.request({
+    method: "POST",
+    url: "/user/login",
+    form: true,
+    body: {
+      name: "zakiya@chapterthree.com",
+      pass: "admin",
+      form_id: "user_login_form",
+    },
+  });
 };
 
 describe("sf.gov", () => {
