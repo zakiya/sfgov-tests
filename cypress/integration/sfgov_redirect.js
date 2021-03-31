@@ -35,6 +35,7 @@ let createTopicNode = (title) => {
     force: true,
   });
   cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
+  cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
   cy.get(inputElements.serviceSectionAutocomplete1).type("{enter}");
   cy.get(inputElements.selectPublish).select("published", { force: true });
   cy.get(inputElements.buttonSubmit).click({
