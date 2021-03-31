@@ -1,18 +1,5 @@
 import inputElements from "./inputElements";
-import values from "./values";
-
-let login = () => {
-  cy.request({
-    method: "POST",
-    url: "/user/login",
-    form: true,
-    body: {
-      name: "zakiya@chapterthree.com",
-      pass: "admin",
-      form_id: "user_login_form",
-    },
-  });
-};
+import titleText from "./titleText";
 
 const createTopicNode = (title) => {
   cy.visit("/node/add/topic");
@@ -28,7 +15,7 @@ const createTopicNode = (title) => {
 
   // Create first card.
   cy.get(inputElements.inputServiceAddItem).click({ force: true });
-  cy.get(inputElements.serviceSectionAutocomplete1).type(values.titleA, {
+  cy.get(inputElements.serviceSectionAutocomplete1).type(titleText("O", "A"), {
     force: true,
   });
   cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
@@ -37,7 +24,7 @@ const createTopicNode = (title) => {
 
   // Create second card.
   cy.get(inputElements.inputServiceAddItem).click({ force: true });
-  cy.get(inputElements.serviceSectionAutocomplete2).type(values.titleB, {
+  cy.get(inputElements.serviceSectionAutocomplete2).type(titleText("O", "B"), {
     force: true,
   });
   cy.get(inputElements.serviceSectionAutocomplete2).type("{downarrow}");
@@ -50,12 +37,5 @@ const createTopicNode = (title) => {
     force: true,
   });
 };
-
-describe("sf.gov", () => {
-  it("Topic", () => {
-    login();
-    createTopicNode("Topic");
-  });
-});
 
 export default createTopicNode;

@@ -1,6 +1,6 @@
-import createTopicNode from "./topic";
-import values from "./values";
+import titleText from "./titleText";
 import inputElements from "./inputElements";
+import createTopicNode from "./topic";
 
 let createTransactionNode = (title) => {
   cy.get(inputElements.textfieldTitle).type(title, { force: true });
@@ -38,10 +38,9 @@ let login = () => {
 describe("sf.gov", () => {
   it("Test", () => {
     login();
-    createTransaction(values.titleA);
-    createTransaction(values.titleB, true);
+    createTransaction(titleText("O", "A"));
+    createTransaction(titleText("O", "B"), true);
+    createTransaction(titleText("D", "B"), true);
     createTopicNode("Topic");
-
-    // expect(true).to.equal(true);
   });
 });
