@@ -1,5 +1,6 @@
 import titleText from "./titleText";
 import inputElements from "./inputElements";
+import createRedirect from "./createRedirect";
 import createTopicNode from "./topic";
 const op = { force: true };
 
@@ -24,7 +25,7 @@ let createTransaction = (title, translation, customTranslatedAlias) => {
   if (translation === true) {
     cy.get(inputElements.aTranslateTab).click({ force: true });
     cy.get('[href$="/translations/add/en/es"]').click();
-    createTransactionNode(title + "-- es", customTranslatedAlias);
+    createTransactionNode("--es", customTranslatedAlias);
   }
 };
 
@@ -42,11 +43,15 @@ let login = () => {
 };
 
 describe("sf.gov", () => {
-  it("Test", () => {
+  it("Create", () => {
     login();
-    createTransaction(titleText("O", "B"), true);
-    createTransaction(titleText("D", "B"), true);
-    createTopicNode("Topic");
-    createTransaction(titleText("O", "A"), true, true);
+    createTransaction(titleText("O", "a"), true, true);
+    createTransaction(titleText("D", "a"), true, true);
+    createRedirect("a");
+    createTopicNode(["a"]);
+  });
+
+  it("Test", () => {
+    cy.contains(titleText("O", "a")).click();
   });
 });

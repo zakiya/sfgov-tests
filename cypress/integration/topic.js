@@ -1,11 +1,27 @@
 import inputElements from "./inputElements";
 import titleText from "./titleText";
 
-const createTopicNode = (title) => {
+let createServiceCards = (scenarios) => {
+  for (const scenario of scenarios) {
+    // Create first card.
+    cy.get(inputElements.inputServiceAddItem).click({ force: true });
+    cy.get(inputElements.serviceSectionAutocomplete1).type(
+      titleText("O", scenario),
+      {
+        force: true,
+      }
+    );
+    cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
+    cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
+    cy.get(inputElements.serviceSectionAutocomplete1).type("{enter}");
+  }
+};
+
+const createTopicNode = (scenarios) => {
   cy.visit("/node/add/topic");
 
   // Enter title.
-  cy.get(inputElements.textfieldTitle).type(title, { force: true });
+  cy.get(inputElements.textfieldTitle).type("Topic", { force: true });
 
   // Add Service section.
   cy.get(inputElements.inputServiceAdd).click({ force: true });
@@ -13,23 +29,7 @@ const createTopicNode = (title) => {
     force: true,
   });
 
-  // Create first card.
-  cy.get(inputElements.inputServiceAddItem).click({ force: true });
-  cy.get(inputElements.serviceSectionAutocomplete1).type(titleText("O", "A"), {
-    force: true,
-  });
-  cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
-  cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
-  cy.get(inputElements.serviceSectionAutocomplete1).type("{enter}");
-
-  // Create second card.
-  cy.get(inputElements.inputServiceAddItem).click({ force: true });
-  cy.get(inputElements.serviceSectionAutocomplete2).type(titleText("O", "B"), {
-    force: true,
-  });
-  cy.get(inputElements.serviceSectionAutocomplete2).type("{downarrow}");
-  cy.get(inputElements.serviceSectionAutocomplete2).type("{downarrow}");
-  cy.get(inputElements.serviceSectionAutocomplete2).type("{enter}");
+  createServiceCards(scenarios);
 
   // Publish and submit.
   cy.get(inputElements.selectPublish).select("published", { force: true });

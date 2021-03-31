@@ -16,6 +16,11 @@ const inputElements = {
   selectPublish: '[data-drupal-selector="edit-moderation-state-0-state"]',
   buttonSubmit: '[data-drupal-selector="edit-submit"]',
   aTranslateTab: '.sfgov-tabbed-navigation [href$="translations"]',
+  redirect: {
+    origin: '[name="redirect_source[0][path]"]',
+    destination: '[name="redirect_redirect[0][uri]"]',
+    save: '[name="op"]',
+  },
 };
 
 export default inputElements;
