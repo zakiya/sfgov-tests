@@ -1,7 +1,7 @@
 {
   "scripts": {
     "backstop": "backstop reference --config=backstop.js && backstop test --config=backstop.js",
-    "backstoptest": "backstop test --config=backstop.js",
+    "backstoptest": "backstop test --config=backstop.js"
   },
   "devDependencies": {
     "backstopjs": "^5.1.0",
