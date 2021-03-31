@@ -1,33 +1,7 @@
 import titleText from "./titleText";
-import inputElements from "./inputElements";
-import createRedirect from "./createRedirect";
 import createTopicNode from "./topic";
+import createScenario from "./createScenario";
 const op = { force: true };
-
-let createTransactionNode = (title, customTranslatedAlias) => {
-  cy.get(inputElements.textfieldTitle).type(title, op);
-
-  if (customTranslatedAlias === true) {
-    cy.get(inputElements.inputAliasCheckbox).uncheck({ force: true });
-    cy.get(inputElements.textfieldAlias).type("-custom-alias", op);
-  }
-
-  cy.get(inputElements.selectPublish).select("published");
-  cy.get(inputElements.buttonSubmit).click({
-    force: true,
-  });
-};
-
-let createTransaction = (title, translation, customTranslatedAlias) => {
-  cy.visit("/node/add/transaction");
-  createTransactionNode(title);
-
-  if (translation === true) {
-    cy.get(inputElements.aTranslateTab).click({ force: true });
-    cy.get('[href$="/translations/add/en/es"]').click();
-    createTransactionNode("--es", customTranslatedAlias);
-  }
-};
 
 let login = () => {
   cy.request({
@@ -45,10 +19,20 @@ let login = () => {
 describe("sf.gov", () => {
   it("Create", () => {
     login();
-    createTransaction(titleText("O", "a"), true, true);
-    createTransaction(titleText("D", "a"), true, true);
-    createRedirect("a");
-    createTopicNode(["a"]);
+    createScenario("a", true, true, true, true);
+    createScenario("d", true, true, true, false);
+    createScenario("e", true, true, false);
+    createScenario("f", true, false, false);
+    createScenario("g", true, true, true, false);
+    createScenario("h", true, true, false);
+    createScenario("i", true, false, false);
+    createScenario("j", false, false);
+    // createScenario("l", true, true, false);
+    // createScenario("m", true, false, false);
+    createScenario("q", true, false, true, true);
+    createScenario("r", false, null, true, true);
+    createScenario("u", false, null, true, false);
+    createTopicNode(["a", "d", "e", "f", "g", "h", "i", "j", "q", "r", "u"]);
   });
 
   it("Test", () => {
