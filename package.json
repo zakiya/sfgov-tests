@@ -1,7 +1,8 @@
 {
   "scripts": {
     "backstop": "backstop reference --config=backstop.js && backstop test --config=backstop.js",
-    "backstoptest": "backstop test --config=backstop.js"
+    "backstoptest": "backstop test --config=backstop.js",
+    "cypress": "cypress open --config watchForFileChanges=false"
   },
   "devDependencies": {
     "backstopjs": "^5.1.0",

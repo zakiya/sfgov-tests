@@ -15,7 +15,7 @@ cp example.env .env
 
 ## Cypress tests.
 ### Capture and run tests.
-`npx cypress open`
+`npm run cypress`
 
 ## Other commands
 
