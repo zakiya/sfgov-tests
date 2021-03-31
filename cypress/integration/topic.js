@@ -2,18 +2,17 @@ import inputElements from "./inputElements";
 import titleText from "./titleText";
 
 let createServiceCards = (scenarios) => {
-  for (const scenario of scenarios) {
+  for (let i = 0; i < scenarios.length; i++) {
+    let autocompleteInput = `[name="field_department_services[0][subform][field_dept_service_sect_services][${i}][target_id]`;
+
     // Create first card.
     cy.get(inputElements.inputServiceAddItem).click({ force: true });
-    cy.get(inputElements.serviceSectionAutocomplete1).type(
-      titleText("O", scenario),
-      {
-        force: true,
-      }
-    );
-    cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
-    cy.get(inputElements.serviceSectionAutocomplete1).type("{downarrow}");
-    cy.get(inputElements.serviceSectionAutocomplete1).type("{enter}");
+    cy.get(autocompleteInput).type(titleText("O", scenarios[i]), {
+      force: true,
+    });
+    cy.get(autocompleteInput).type("{downarrow}");
+    cy.get(autocompleteInput).type("{downarrow}");
+    cy.get(autocompleteInput).type("{enter}");
   }
 };
 
