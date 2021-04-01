@@ -8,10 +8,10 @@ import createTransaction from "./createTransaction";
 // dt = Destination has translation - boolean
 // dta = Destination has translation alias - boolean
 
-const createScenario = (sid, ot, ota, dt, dta) => {
+const createScenario = (sid, ot, ota, dt, dta, autoCompleteOrPath) => {
   createTransaction(titleText("O", sid), ot, ota);
   createTransaction(titleText("D", sid), dt, dta);
-  createRedirect(sid);
+  createRedirect(sid, autoCompleteOrPath);
 };
 
 export default createScenario;
