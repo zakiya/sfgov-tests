@@ -1,6 +1,7 @@
 import titleText from "./titleText";
 import createTopicNode from "./topic";
 import createScenario from "./createScenario";
+import test from "./test";
 const op = { force: true };
 
 let login = () => {
@@ -17,6 +18,8 @@ let login = () => {
 };
 
 describe("sf.gov", () => {
+  let suite = ["a", "d", "e", "f", "g", "h", "i", "j", "q", "r", "u"];
+
   it("Create", () => {
     login();
     createScenario("a", true, true, true, true);
@@ -32,10 +35,10 @@ describe("sf.gov", () => {
     createScenario("q", true, false, true, true);
     createScenario("r", false, null, true, true);
     createScenario("u", false, null, true, false);
-    createTopicNode(["a", "d", "e", "f", "g", "h", "i", "j", "q", "r", "u"]);
+    createTopicNode(suite);
   });
 
   it("Test", () => {
-    cy.contains(titleText("O", "a")).click();
+    test(suite);
   });
 });
