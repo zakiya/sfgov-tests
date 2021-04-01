@@ -2,9 +2,4 @@
     "baseUrl": "https://sfgov.lndo.site/",
     "viewportWidth": 1000,
     "viewportHeight": 1660,
-
-    "env": {
-        "un": "admin@chapterthree.com",
-        "pw": "admin"
-    }
 }
