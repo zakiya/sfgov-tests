@@ -18,7 +18,22 @@ let login = () => {
 };
 
 describe("sf.gov", () => {
-  let suite = ["a", "d", "e", "f", "g", "h", "i", "j", "q", "r", "u"];
+  let suite = [
+    "a",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "p",
+    "q",
+    "r",
+    "t",
+    "u",
+  ];
 
   it("Create", () => {
     login();
