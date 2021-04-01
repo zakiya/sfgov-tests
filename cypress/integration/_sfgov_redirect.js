@@ -10,8 +10,8 @@ let login = () => {
     url: "/user/login",
     form: true,
     body: {
-      name: Cypress.env.un,
-      pass: Cypress.env.pw,
+      name: Cypress.env("un"),
+      pass: Cypress.env("pw"),
       form_id: "user_login_form",
     },
   });
