@@ -40,6 +40,7 @@ describe("sf.gov", () => {
     createScenario("a", true, true, true, true, "autocomplete");
     createScenario("c", true, true, true, true, "path");
     createScenario("d", true, true, true, false, "path");
+    // Test matrix: https://docs.google.com/spreadsheets/d/1iGwK5ggKfELpzj4PBKGFBLOf4JZPsjaUQABfPCWwjuM/edit?usp=sharing
     createScenario("e", true, true, false, null, "path");
     createScenario("f", true, false, false, null, "path");
     createScenario("g", true, true, true, false, "autocomplete");
