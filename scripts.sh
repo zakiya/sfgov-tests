@@ -1,15 +1,21 @@
 #!/bin/bash
 
 sfgov-check ()  {
-  echo 'cbf or cs'
+  echo 'ex: sfgov-check sfgov_utilities'
   DIR=~/Sites/sfgov/
-  MODULE_PATH=web/modules/custom/sfgov_vaccine
-  CS_PATH=vendor/bin/php$1
+  MODULE_PATH=web/modules/custom/$1
+  PHP_PATH=vendor/bin/php
   EXTENSIONS=php,module,inc,install,test,profile,theme,css,info
   IGNORE=node_modules,bower_components,vendor
-  $DIR$CS_PATH --config-set colors 1
-  $DIR$CS_PATH --standard=Drupal --extensions=$EXTENSIONS --ignore=$IGNORE $DIR$MODULE_PATH
-  $DIR$CS_PATH --standard=DrupalPractice --extensions=$EXTENSIONS --ignore=IGNORE $DIR$MODULE_PATH
+  
+  COMMANDS=( cbf cs )
+
+  for COMMAND in "${COMMANDS[@]}"
+  do
+  $DIR$PHP_PATH$COMMAND --config-set colors 1
+  $DIR$PHP_PATH$COMMAND --standard=Drupal --extensions=$EXTENSIONS --ignore=$IGNORE $DIR$MODULE_PATH
+  $DIR$PHP_PATH$COMMAND --standard=DrupalPractice --extensions=$EXTENSIONS --ignore=IGNORE $DIR$MODULE_PATH
+  done
 }
 
 sfgov-testurl-local () {
