@@ -17,17 +17,20 @@ cp example.env .env
 ### Capture and run tests.
 `npm run cypress`
 
-## Other commands
+## Axe accessibility tests.
+### Install globally.
+`npm install @axe-core/cli -g`
+
+### Run test.
+`axe https://anyurl.com`
+
+## SFgov custom commands.
 
 scripts.sh contains the following:
 
-* Run code beautifier on sfgov_vaccine
+* Run code beautifier and code sniff on a custom module.
 
-    `sfgov-check cbf`
-
-* Run code sniff on sfgov_vaccine
-
-    `sfgov-check cs`
+    `sfgov-check [module name]`
 
 * Set local api url to phone test
 
