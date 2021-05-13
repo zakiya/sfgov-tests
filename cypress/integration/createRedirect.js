@@ -16,9 +16,13 @@ let createRedirect = (scenarioLetter, type) => {
         force: true,
       }
     );
+
+    cy.get(inputElements.redirect.destination).type("{downarrow}");
+    cy.pause();
     cy.get(inputElements.redirect.destination).type("{downarrow}");
     cy.get(inputElements.redirect.destination).type("{downarrow}");
     cy.get(inputElements.redirect.destination).type("{enter}");
+    cy.pause();
   }
 
   cy.get(inputElements.redirect.save).click();

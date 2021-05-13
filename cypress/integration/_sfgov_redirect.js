@@ -37,6 +37,9 @@ describe("sf.gov", () => {
 
   it("Create", () => {
     login();
+
+    // Test matrix: https://docs.google.com/spreadsheets/d/1iGwK5ggKfELpzj4PBKGFBLOf4JZPsjaUQABfPCWwjuM/edit?usp=sharing
+
     createScenario("a", true, true, true, true, "autocomplete");
     createScenario("c", true, true, true, true, "path");
     createScenario("d", true, true, true, false, "path");
