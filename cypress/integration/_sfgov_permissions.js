@@ -18,6 +18,6 @@ describe("permissions", () => {
 
   it("Create", () => {
     login();
-    // createUser(suite);
+    createUser(suite);
   });
 });

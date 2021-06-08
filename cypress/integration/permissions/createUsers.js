@@ -1,4 +1,5 @@
 import inputElements from "./inputElements";
+import autocomplete from "./autocomplete";
 
 let createUsers = (roles) => {
   for (let role of roles) {
@@ -11,6 +12,10 @@ let createUsers = (roles) => {
     cy.get(inputElements.user.name).type(name);
     cy.get(inputElements.user.pass1).type(name);
     cy.get(inputElements.user.pass2).type(name);
+
+    cy.get(inputElements.user.dept_add).click();
+
+    autocomplete(inputElements.user.dept_input, "ge");
 
     if (role !== "auth") {
       cy.get(`[name="roles[${role}]"]`).check();
