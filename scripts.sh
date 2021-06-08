@@ -49,3 +49,42 @@ sfgov-testurl-pr () {
   echo "View page at:"
   echo "https://pr-$2-sfgov.pantheonsite.io/vaccine-sites"
 }
+
+sfgov-term ()  {
+  echo 'ex: sfgov-term 718'
+  PR=$1
+
+  if [ -z $2 ]
+  then
+    COMMAND=uli
+  else
+    COMMAND=$2
+  fi
+
+  term
+  terminus drush sfgov.pr-$PR $COMMAND
+  echo "terminus drush sfgov.pr-$PR $COMMAND"
+
+}
+
+sfgov-perm-reset ()  {
+  echo 'ex: sfgov-perm-reset [pull]'
+
+  DIR=~/Sites/sfgov/
+  PULL=$1
+
+  cd $DIR
+  gh pr checkout 738
+  if [ -z $1 ]
+  then
+    echo 'not pulling db'
+  else
+    lando pull --code=none --database=live --files=none
+  fi
+  composer install
+  lando drush updb
+  lando drush en permissions_filter
+  lando drush cim
+  lando drush cr
+  lando drush uli
+}
