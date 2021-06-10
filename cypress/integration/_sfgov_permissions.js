@@ -14,10 +14,12 @@ let login = () => {
 };
 
 describe("permissions", () => {
-  let suite = ["writer", "publisher", "auth"];
+  const departments = ["ge", "im"];
+  const roles = ["writer", "publisher", "auth"];
+  const start = 0;
 
   it("Create", () => {
     login();
-    createUser(suite);
+    createUser(departments, roles, start);
   });
 });
