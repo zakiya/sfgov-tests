@@ -88,3 +88,24 @@ sfgov-perm-reset ()  {
   lando drush cr
   lando drush uli
 }
+
+sfgov-reset ()  {
+  echo 'ex: sfgov-reset 926 [pull]'
+
+  DIR=~/Sites/sfgov/
+  PULL=$1
+
+  cd $DIR
+  gh pr checkout $1
+  if [ -z $2 ]
+  then
+    echo 'not pulling db'
+  else
+    lando pull --code=none --database=pr-$1 --files=none
+  fi
+  composer install
+  lando drush updb
+  lando drush cim
+  lando drush cr
+  lando drush uli
+}
