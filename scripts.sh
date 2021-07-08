@@ -74,7 +74,7 @@ sfgov-perm-reset ()  {
   PULL=$1
 
   cd $DIR
-  gh pr checkout 738
+  gh pr checkout 945
   if [ -z $1 ]
   then
     echo 'not pulling db'
