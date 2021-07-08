@@ -1,5 +1,6 @@
 import createUser from "./permissions/createUsers";
 
+// Login as admin. Store credentials in cypress.env.json.
 let login = () => {
   cy.request({
     method: "POST",
@@ -14,10 +15,16 @@ let login = () => {
 };
 
 describe("permissions", () => {
-  const departments = ["ge", "im"];
-  const roles = ["writer", "publisher", "auth"];
+  // Script create a user for each role and department in the arrays..
+  // const departments = ["ge", "im"];
+  // const roles = ["writer", "publisher", "auth", "digital_services"];
+  const departments = ["ge"];
+  const roles = ["writer", "publisher", "auth", "digital_services"];
+
+  // Unique number for user names.
   const start = 0;
 
+  // Main script.
   it("Create", () => {
     login();
     createUser(departments, roles, start);

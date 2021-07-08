@@ -5,7 +5,7 @@ let createUsers = (depts, roles, start) => {
   for (let dept of depts) {
     for (let role of roles) {
       const mail = "zakiya+" + role + dept + start + "@chapterthree.com";
-      const name = "zakiya" + role + dept + start;
+      const name = "test" + role + dept + start;
 
       cy.visit("/admin/people/create");
 

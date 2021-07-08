@@ -6,3 +6,4 @@ backstop_data/ci_report
 .env
 /xamples
 cypress.env.json
+sfgov_permissions.md
