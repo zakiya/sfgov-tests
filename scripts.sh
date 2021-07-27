@@ -101,7 +101,6 @@ sfgov-perm-reset ()  {
   fi
   composer install
   lando drush updb
-  lando drush en permissions_filter
   lando drush cim
   lando drush cr
   lando drush uli
@@ -114,6 +113,8 @@ sfgov-reset ()  {
   PULL=$1
 
   cd $DIR
+  git status
+  git stash
   gh pr checkout $1
   if [ -z $2 ]
   then
