@@ -18,6 +18,24 @@ sfgov-check ()  {
   done
 }
 
+sfgov-check-theme ()  {
+  echo 'ex: sfgov-check-theme sfgovpl'
+  DIR=~/Sites/sfgov/
+  MODULE_PATH=web/themes/custom/sfgovpl
+  PHP_PATH=vendor/bin/php
+  EXTENSIONS=php,module,inc,install,test,profile,theme,info
+  IGNORE=node_modules,bower_components,vendor
+
+  COMMANDS=( cbf cs )
+
+  for COMMAND in "${COMMANDS[@]}"
+  do
+  $DIR$PHP_PATH$COMMAND --config-set colors 1
+  $DIR$PHP_PATH$COMMAND --standard=Drupal --extensions=$EXTENSIONS --ignore=$IGNORE $DIR$MODULE_PATH
+  $DIR$PHP_PATH$COMMAND --standard=DrupalPractice --extensions=$EXTENSIONS --ignore=IGNORE $DIR$MODULE_PATH
+  done
+}
+
 sfgov-testurl-local () {
   echo "Ex: 'sfgov-testurl-local phone' or 'sfgov-testurl-local'"
   if [ $1 = "phone" ]
